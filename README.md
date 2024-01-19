@@ -1,4 +1,4 @@
-# Some service files
+# Some files
 
 本仓库用于存储Linux下部署服务时，所需要用到的脚本和配置文件等。
 

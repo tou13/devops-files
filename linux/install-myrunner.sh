@@ -18,10 +18,10 @@ wget -O myrunner https://gitea.com/gitea/act_runner/releases/download/v0.2.6/act
 chmod +x myrunner
 mv myrunner /usr/local/bin/
 myrunner register --no-interactive \
-    --instance $(host_url) \
-    --token $(host_token) \
-    --name $(host_name) \
-    --labels $(host_name):host
+    --instance $host_url \
+    --token $host_token \
+    --name $host_name \
+    --labels $host_name:host
 
 cat <<EOF > /etc/systemd/system/myrunner.service
 [Unit]
