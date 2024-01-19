@@ -69,3 +69,5 @@ bash <(curl -Ls https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master
 
 systemctl enable --now v2ray && \
 systemctl status v2ray
+
+echo "安装完成，uuid：$uuid2，端口：$port"
