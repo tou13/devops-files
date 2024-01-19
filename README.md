@@ -7,7 +7,7 @@
 ## 脚本使用
 初始化软件包（安装cur, wget, git, nano等），国内机器先参考[这里](https://mirror.nju.edu.cn/mirrorz-help/debian/?mirror=NJU)换源
 ```
-apt update && apt upgrade -y && apt install curl wget git nano -y
+apt update && apt upgrade -y && apt install curl wget git nano openssl -y
 ```
 增加swap交换空间
 ```
@@ -16,4 +16,8 @@ bash <(curl -Ls https://cdn.jsdelivr.net/gh/tou13/somefiles/linux/add-swap.sh) 1
 安装docker（并设置国内源）
 ```
 bash <(curl -Ls https://cdn.jsdelivr.net/gh/tou13/somefiles/linux/install-docker.sh)
+```
+安装v2rxx
+```
+bash <(curl -Ls https://cdn.jsdelivr.net/gh/tou13/somefiles/linux/install-v2rxx.sh)
 ```
