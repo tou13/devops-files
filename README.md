@@ -5,6 +5,10 @@
 仓库仅供私人使用，不保证脚本的稳定性。
 
 ## 脚本使用
+初始化软件包（安装curl, wget, git等）
+```
+bash <(curl -Ls https://cdn.jsdelivr.net/gh/tou13/somefiles/linux/init-package.sh)
+```
 增加swap交换空间
 ```
 bash <(curl -Ls https://cdn.jsdelivr.net/gh/tou13/somefiles/linux/add-swap.sh) 1024
