@@ -7,7 +7,7 @@
 ## 脚本使用
 初始化软件包（安装cur, wget, git, nano等），国内机器先参考[这里](https://mirror.nju.edu.cn/mirrorz-help/debian/?mirror=NJU)换源
 ```
-apt update && apt upgrade -y && apt install curl wget git nano openssl -y
+apt update && apt upgrade -y && apt install bash curl wget git nano openssl -y
 ```
 增加swap交换空间
 ```
