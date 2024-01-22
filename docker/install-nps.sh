@@ -6,7 +6,7 @@ if ! command -v docker &> /dev/null; then
 fi
 
 if [ -d "/home/volume/nps" ]; then
-    echo "NPS配置已存在于 /home/volume/vps 跳过安装，可手动运行docker"
+    echo "NPS配置已存在于/home/volume/nps，跳过安装"
     exit 0
 fi
 
@@ -69,7 +69,6 @@ docker run -d \
   --restart unless-stopped \
   --cpus 0.12 \
   --memory 256M \
-  --network internalnet \
   -p 22150-22159:22150-22159 \
   -v /home/volume/nps/conf:/conf \
   -v /etc/localtime:/etc/localtime:ro \
