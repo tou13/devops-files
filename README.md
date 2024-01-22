@@ -21,3 +21,9 @@ bash <(curl -Ls https://cdn.jsdelivr.net/gh/tou13/somefiles/linux/install-docker
 ```
 bash <(curl -Ls https://cdn.jsdelivr.net/gh/tou13/somefiles/linux/install-v2rxx.sh)
 ```
+
+## docker应用
+安装nps
+```
+bash <(curl -Ls https://cdn.jsdelivr.net/gh/tou13/somefiles/docker/install-nps.sh) admin pass@word
+```
