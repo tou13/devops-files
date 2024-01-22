@@ -30,4 +30,4 @@ systemctl daemon-reload
 systemctl enable --now ninja
 systemctl status ninja
 
-echo "ninja安装成功，使用 https://host:7999 访问" 
+echo "ninja安装成功，使用 https://host:$ninja_port 访问" 
