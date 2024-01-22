@@ -11,19 +11,19 @@ apt update && apt upgrade -y && apt install bash curl wget git nano openssl -y
 ```
 增加swap交换空间
 ```
-bash <(curl -Ls https://cdn.jsdelivr.net/gh/tou13/somefiles/linux/add-swap.sh) 1024
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/add-swap.sh) 1024
 ```
 安装docker（并设置国内源）
 ```
-bash <(curl -Ls https://cdn.jsdelivr.net/gh/tou13/somefiles/linux/install-docker.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-docker.sh)
 ```
 安装v2rxx
 ```
-bash <(curl -Ls https://cdn.jsdelivr.net/gh/tou13/somefiles/linux/install-v2rxx.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-v2rxx.sh)
 ```
 
 ## docker应用
 安装nps
 ```
-bash <(curl -Ls https://cdn.jsdelivr.net/gh/tou13/somefiles/docker/install-nps.sh) admin pass@word
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-nps.sh) admin pass@word
 ```
