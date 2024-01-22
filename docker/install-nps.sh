@@ -14,7 +14,7 @@ web_user=${1:-admin}
 web_pass=${2:-pass@word}
 
 mkdir -p /home/volume/nps/conf/
-bash <(curl -Ls https://cdn.jsdelivr.net/gh/tou13/somefiles/linux/install-docker.sh) /home/volume/nps/conf
+bash <(curl -Ls https://cdn.jsdelivr.net/gh/tou13/somefiles/linux/add-diy-https-cert.sh) /home/volume/nps/conf
 
 touch /home/volume/nps/conf/clients.json
 touch /home/volume/nps/conf/hosts.json
