@@ -64,6 +64,8 @@ open_captcha=true
 tls_enable=true
 EOF
 
+chown -R 1000:1000 /home/volume/nps
+
 docker run -d \
   --name nps-$USER \
   --restart unless-stopped \
