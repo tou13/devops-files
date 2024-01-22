@@ -5,8 +5,9 @@ if command -v ninja &> /dev/null; then
     exit 0
 fi
 
-wget -O /usr/local/bin/ninja https://github.com/gngpp/ninja/releases/download/v0.9.12/ninja-0.9.12-x86_64-unknown-linux-musl.tar.gz
-chmod +x /usr/local/bin/ninja
+wget -O ninja.tar.gz https://github.com/gngpp/ninja/releases/download/v0.9.12/ninja-0.9.12-x86_64-unknown-linux-musl.tar.gz
+tar -xvzf ninja.tar.gz
+mv ./ninja /usr/local/bin/
 
 cat <<EOF > /etc/systemd/system/ninja.service
 [Unit]
