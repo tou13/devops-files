@@ -28,3 +28,5 @@ if [ $(curl -Ls http://ipip.rehi.org/country_code) == "CN" ]; then
 else
     bash <(curl -Ls https://get.docker.com)
 fi
+
+docker network create internalnet

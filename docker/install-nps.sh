@@ -71,10 +71,11 @@ docker run -d \
   --restart unless-stopped \
   --cpus 0.12 \
   --memory 256M \
+  --network internalnet \
   -p 22150-22159:22150-22159 \
   -v /home/volume/nps/conf:/conf \
   -v /etc/localtime:/etc/localtime:ro \
   yisier1/nps:v0.27.01
 
 echo "NPS服务端运行成功，使用ip:22150访问web后台。"
-echo "客户端运行示例：docker run -d --name npc-$USER --restart unless-stopped yisier1/npc:v0.27.01 -server=xxxx -vkey=xxxx -type=tcp -tls_enable=true"
+echo "客户端运行示例：docker run -d --name npc-$USER --restart unless-stopped --network internalnet yisier1/npc:v0.27.01 -tls_enable=true -server=xxxx -vkey=xxxx -type=tcp"
