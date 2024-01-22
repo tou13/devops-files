@@ -20,7 +20,7 @@ After=network.target
 [Service]
 ExecStart=/usr/local/bin/ninja run --bind 127.0.0.1:$ninja_port --disable-webui
 Restart=on-failure
-WorkingDirectory=/root
+Environment="HOME=/root"
 
 [Install]
 WantedBy=multi-user.target
