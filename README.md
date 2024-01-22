@@ -27,7 +27,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/ins
 ```
 安装ninja
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-ninja.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-ninja.sh) 7999
 ```
 ## docker应用
 安装nps
