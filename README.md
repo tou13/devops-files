@@ -21,7 +21,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/ins
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-v2rxx.sh)
 ```
-
+安装ttyd
+```
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-ttyd.sh) admin pass@word
+```
 ## docker应用
 安装nps
 ```
