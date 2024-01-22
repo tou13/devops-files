@@ -18,7 +18,7 @@ Documentation=https://github.com/gngpp/ninja/blob/main/README_zh.md
 After=network.target
 
 [Service]
-ExecStart=/usr/local/bin/ninja run --bind 127.0.0.1:$ninja_port --disable-webui
+ExecStart=/usr/local/bin/ninja run --bind 0.0.0.0:$ninja_port --disable-webui
 Restart=on-failure
 Environment="HOME=/root"
 
