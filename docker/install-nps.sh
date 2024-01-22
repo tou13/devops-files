@@ -74,4 +74,5 @@ docker run -d \
   -v /etc/localtime:/etc/localtime:ro \
   yisier1/nps:v0.27.01
 
-echo "NPS服务端运行成功，使用ip:22150访问web后台"
+echo "NPS服务端运行成功，使用ip:22150访问web后台。"
+echo "客户端运行示例：docker run -d --name npc-$USER --restart unless-stopped yisier1/npc:v0.27.01 -server=xxxx -vkey=xxxx -type=tcp -tls_enable=true"
