@@ -36,7 +36,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/in
 ```
 安装frp客户端
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-frpc.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-frpc.sh) default
 ```
 安装幻兽帕鲁palworld联机服务器
 ```
