@@ -38,6 +38,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/in
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-nps.sh) admin pass@word
 ```
+安装frp服务端
+```
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-frps.sh) pass@word
+```
 安装frp客户端
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-frpc.sh) default
