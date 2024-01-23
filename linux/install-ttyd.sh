@@ -21,6 +21,7 @@ After=network.target
 [Service]
 ExecStart=/usr/local/sbin/ttyd --writable --ipv6 --credential $ttyd_user:$ttyd_pass --port 2083 --ssl --ssl-cert /home/volume/nginx/ssl/diy.crt --ssl-key /home/volume/nginx/ssl/diy.key bash
 Restart=always
+Environment="HOME=/root"
 
 [Install]
 WantedBy=multi-user.target
