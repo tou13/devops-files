@@ -25,15 +25,15 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/ins
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-ttyd.sh) admin pass@word
 ```
+安装nginx
+```
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-nginx.sh) 80 443
+```
 安装ninja
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-ninja.sh) 7999
 ```
 ## docker应用
-安装nginx
-```
-bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-nginx.sh) 80 443
-```
 安装frp服务端
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-frps.sh) pass@word 7000 20000 30000
