@@ -34,3 +34,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/ins
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-nps.sh) admin pass@word
 ```
+安装frp客户端
+```
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-frpc.sh)
+```
