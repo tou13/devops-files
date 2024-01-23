@@ -13,7 +13,6 @@ fi
 web_user=${1:-admin}
 web_pass=${2:-pass@word}
 
-mkdir -p /home/volume/nps/conf/
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/add-diy-https-cert.sh) /home/volume/nps/conf
 
 touch /home/volume/nps/conf/clients.json
