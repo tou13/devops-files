@@ -14,7 +14,7 @@ sed -i 's|/etc/nginx/sites-enabled/*;|/home/site/*;|' /etc/nginx/nginx.conf
 mkdir -p /home/volume/nginx/site
 
 http_port=${1:-80}
-https_port=${1:-443}
+https_port=${2:-443}
 
 cat <<EOF > /home/volume/nginx/site/default
 server {

@@ -27,7 +27,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/ins
 ```
 安装nginx
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-nginx.sh) 80 443
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-nginx.sh) 80 443
 ```
 安装ninja
 ```
