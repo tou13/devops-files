@@ -24,6 +24,11 @@ cat <<EOF > /usr/local/etc/v2ray/config.json
                 ],
                 "outboundTag": "block"
             }
+            {
+                "type": "field",
+                "inboundTag": ["my-in-tag"],
+                "outboundTag": "my-out-tag"
+            }
         ]
     },
     "inbounds": [
@@ -50,6 +55,31 @@ cat <<EOF > /usr/local/etc/v2ray/config.json
                         ]
                 }
             }
+        },
+        {
+            "tag": "my-in-tag",
+            "listen": "0.0.0.0",
+            "port": $(($port+1)),
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "$uuid2",
+                        "alterId": 0
+                    }
+                ],
+                "disableInsecureEncryption": false
+            },
+            "streamSettings": {
+                "network": "ws",
+                "sniffing": {
+                    "enabled": true,
+                    "destOverride": [
+                        "http",
+                        "tls"
+                    ]
+                }
+            }
         }
     ],
     "outbounds": [
@@ -60,6 +90,18 @@ cat <<EOF > /usr/local/etc/v2ray/config.json
         {
             "protocol": "blackhole",
             "tag": "block"
+        },
+        {
+            "protocol": "socks",
+            "tag": "my-out-tag",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "127.0.0.1",
+                        "port": 12345
+                    }
+                ]
+            }
         }
     ]
 }
