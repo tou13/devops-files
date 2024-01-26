@@ -51,4 +51,8 @@ docker run -d \
   -v /home/volume/firefox/config:/home/kasm-user/.mozilla \
   kasmweb/firefox:1.14.0
 
-echo "firefox远程浏览器安装成功，访问 https://host:$web_port ，使用账号 kasm_user / $login_pass 登入"
+server_public_ip=host
+if ! command -v curl &> /dev/null; then
+    server_public_ip=`curl -sSL http://ipv4.rehi.org/ip`
+fi
+echo "firefox远程浏览器安装成功，访问 https://$server_public_ip:$web_port ，使用账号 kasm_user / $login_pass 登入"

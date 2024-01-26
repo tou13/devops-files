@@ -42,6 +42,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/in
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-frpc.sh) default
 ```
+安装Duplicati
+```
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-duplicati.sh) 8200
+```
 安装firefox远程浏览器
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-kasm-firefox.sh) pass@word 6901
