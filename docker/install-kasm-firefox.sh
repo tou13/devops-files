@@ -35,8 +35,8 @@ docker run -d \
   --memory 1000M \
   --shm-size 512m \
   --network internalnet \
-  --dns 119.29.29.29 \
-  --dns 223.5.5.5 \
+  --dns 94.140.14.14 \
+  --dns 94.140.14.15 \
   -e LANG=zh_CN.UTF-8 \
   -e LANGUAGE=zh_CN:zh \
   -e LC_ALL=zh_CN.UTF-8 \
