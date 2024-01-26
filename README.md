@@ -42,6 +42,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/in
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-frpc.sh) default
 ```
+安装firefox远程浏览器
+```
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-firefox.sh) pass@word 6901
+```
 安装幻兽帕鲁palworld联机服务器
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-palworld.sh) mypalworld pass@word
