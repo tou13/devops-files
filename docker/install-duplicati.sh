@@ -13,7 +13,7 @@ fi
 web_port=${1:-8200}
 
 mkdir -p /home/volume/duplicati/data
-chown -R 1000:1000 /home/volume/frp
+chown -R 1000:1000 /home/volume/duplicati
 
 docker run -d \
   --name duplicati-$USER \
