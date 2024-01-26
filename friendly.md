@@ -6,7 +6,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/bin456789/reinstall/main/reins
 ```
 重装debian 11 (无DHCP)
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh) -d 11 -v 64 -p pass@word -port 22 -a -firmware
+bash <(curl -Ls https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh) -d 11 -v 64 -p pass@word -port 22 -a -firmware --mirror 'https://mirrors.huaweicloud.com/debian/'
 ```
 VPS测试脚本
 ```
