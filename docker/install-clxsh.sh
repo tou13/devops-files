@@ -60,7 +60,7 @@ proxy-providers:
     type: http
     url: https://api.sublink.dev/sub?target=clash&insert=false&emoji=true&list=true&tfo=false&scv=false&fdn=false&sort=false&new_name=true&url=https%3A%2F%2Fraw.githubusercontent.com%2FPawdroid%2FFree-servers%2Fmain%2Fsub
     path: ./proxyset/myairport.yaml
-    interval: 86400
+    interval: 21600
     health-check:
       enable: true
       interval: 300
