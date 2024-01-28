@@ -6,6 +6,11 @@ hostname=$(hostname)
 # 自动获取包含公网IP的网络接口，如果获取不到，则默认使用eth0
 get_public_interface() {
     for iface in $(ls /sys/class/net/ | grep -v lo); do
+        # 检查是否是真正的网络接口
+        if [ ! -e "/sys/class/net/$iface/carrier" ]; then
+            continue
+        fi
+
         # 检查 IPv4 地址
         ipv4=$(ip addr show $iface | grep 'inet ' | awk '{print $2}' | cut -d/ -f1)
         if [[ $ipv4 =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
