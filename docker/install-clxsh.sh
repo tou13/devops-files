@@ -5,14 +5,14 @@ if ! command -v docker &> /dev/null; then
     exit 1
 fi
 
-if [ -f "/home/volume/clash/config/config.json" ]; then
-    echo "clash客户端配置已存在于 /home/volume/clash/config/config.json ，跳过安装"
+if [ -f "/home/volume/clash/config/config.yaml" ]; then
+    echo "clash客户端配置已存在于 /home/volume/clash/config/config.yaml ，跳过安装"
     exit 0
 fi
 
 mkdir -p /home/volume/clash/config
 
-cat <<EOF > /home/volume/clash/config/config.json
+cat <<EOF > /home/volume/clash/config/config.yaml
 port: 7890
 socks-port: 7891
 allow-lan: true
