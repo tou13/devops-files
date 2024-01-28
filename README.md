@@ -34,11 +34,11 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/ins
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-ninja.sh) 7999
 ```
 ## docker应用
-安装frp服务端
+安装frps服务端
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-frps.sh) pass@word 7000 20000 30000
 ```
-安装frp客户端
+安装frpc客户端
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-frpc.sh) default
 ```
@@ -49,6 +49,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/in
 安装firefox远程浏览器
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-kasm-firefox.sh) pass@word 6901
+```
+安装clxsh
+```
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-clxsh.sh)
 ```
 安装幻兽帕鲁palworld联机服务器
 ```
