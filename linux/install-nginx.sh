@@ -10,8 +10,8 @@ apt install nginx -y
 
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/add-diy-https-cert.sh)
 
-sed -i 's|/etc/nginx/sites-enabled/*;|/home/site/*;|' /etc/nginx/nginx.conf
 mkdir -p /home/volume/nginx/site
+sed -i 's|/etc/nginx/sites-enabled/|/home/volume/nginx/site/|' /etc/nginx/nginx.conf
 
 http_port=${1:-80}
 https_port=${2:-443}
