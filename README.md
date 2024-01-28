@@ -9,6 +9,10 @@
 ```
 apt update && apt upgrade -y && apt install bash curl wget git nano openssl -y
 ```
+获取系统当前状态
+```
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/get-system-status.sh) myserver
+```
 增加swap交换空间
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/add-swap.sh) 1024
