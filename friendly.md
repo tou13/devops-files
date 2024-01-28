@@ -15,6 +15,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/teddysun/across/master/InstallNET.sh) -dd 'https://dl.lamp.sh/vhd/tiny11_23h2.xz'
 ```
+lxc或openvz重装
+```
+bash <(curl -Ls https://raw.githubusercontent.com/LloydAsp/OsMutation/main/OsMutation.sh)
+```
 VPS测试脚本
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/teddysun/across/master/bench.sh)
