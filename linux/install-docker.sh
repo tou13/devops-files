@@ -23,6 +23,7 @@ fi
 
 if [ $(curl -Ls http://ipip.rehi.org/country_code) == "CN" ]; then
     bash <(curl -Ls https://get.docker.com) --mirror Aliyun
+    mkdir -p /etc/docker
     write_docker_config
     systemctl restart docker
 else
