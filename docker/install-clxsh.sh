@@ -12,6 +12,8 @@ fi
 
 mkdir -p /home/volume/clash/config
 
+wget -O /home/volume/clash/config/geoip.metadb https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.metadb
+
 cat <<EOF > /home/volume/clash/config/config.yaml
 port: 7890
 socks-port: 7891
