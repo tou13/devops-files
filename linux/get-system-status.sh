@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # 获取主机名称
-hostname=${1:-$(hostname)}
+hostname=$(hostname)
 
 # 自动获取包含公网IP的网络接口，如果获取不到，则默认使用eth0
 get_public_interface() {
