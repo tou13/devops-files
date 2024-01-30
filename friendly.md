@@ -19,6 +19,10 @@ lxc或openvz7重装
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/LloydAsp/OsMutation/main/OsMutation.sh)
 ```
+添加warp网络
+```
+bash <(curl -Ls https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh)
+```
 VPS测试脚本
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/teddysun/across/master/bench.sh)
