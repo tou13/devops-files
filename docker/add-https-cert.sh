@@ -5,7 +5,7 @@ if ! command -v docker &> /dev/null; then
     exit 1
 fi
 
-my_domain=${1:example.com}
+my_domain=${1:-example.com}
 cf_token=${2:-}
 cf_id=${3:-}
 
