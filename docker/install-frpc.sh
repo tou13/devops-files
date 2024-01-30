@@ -23,6 +23,7 @@ docker run -d \
   --cpus 0.12 \
   --memory 256M \
   --network internalnet \
+  -v /home/volume/nginx/ssl:/frp/ssl \
   -v /home/volume/frp/config/frpc-$client_name.ini:/frp/frpc.ini \
   stilleshan/frpc:0.51.3
 

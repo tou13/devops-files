@@ -70,6 +70,6 @@ plugin = https2http
 plugin_local_addr = 127.0.0.1:10000
 plugin_host_header_rewrite = 127.0.0.1
 plugin_header_X-From-Where = frp
-plugin_crt_path = /home/volume/nginx/ssl/example.com.crt
-plugin_key_path = /home/volume/nginx/ssl/example.com.key
+plugin_crt_path = /frp/ssl/diy.crt
+plugin_key_path = /frp/ssl/diy.key
 EOF
