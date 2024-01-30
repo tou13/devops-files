@@ -5,7 +5,13 @@ hostname=$(hostname)
 
 # 自动获取包含公网IP的网络接口，如果获取不到，则默认使用eth0
 get_public_interface() {
+    local first_non_lo_iface=""
     for iface in $(ls /sys/class/net/ | grep -v lo); do
+        # 记录第一个非本地回环接口以备后用
+        if [ -z "$first_non_lo_iface" ]; then
+            first_non_lo_iface=$iface
+        fi
+
         # 检查是否是真正的网络接口
         if [ ! -e "/sys/class/net/$iface/carrier" ]; then
             continue
@@ -27,7 +33,7 @@ get_public_interface() {
             return
         fi
     done
-    echo "eth0"
+    echo "$first_non_lo_iface"
 }
 
 INTERFACE=$(get_public_interface)
