@@ -8,6 +8,11 @@ fi
 ttyd_user=${1:-admin}
 ttyd_pass=${2:-pass@word}
 
+if [ -z "$ttyd_user" ] || [ -z "$ttyd_pass" ]; then
+    echo "缺少用户名或密码参数"
+    exit 1
+fi
+
 wget -O /usr/local/sbin/ttyd https://github.com/tsl0922/ttyd/releases/download/1.7.4/ttyd.x86_64 && \
 chmod +x /usr/local/sbin/ttyd
 
