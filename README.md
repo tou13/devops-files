@@ -58,6 +58,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/in
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-clxsh.sh)
 ```
+生成https泛域名证书
+```
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/add-https-cert.sh) example.com cf_token cf_account_id
+```
 安装幻兽帕鲁palworld联机服务器
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-palworld.sh) mypalworld pass@word
