@@ -12,8 +12,9 @@ fi
 
 server_token=${1:-pass@word}
 server_port=${2:-7000}
-range_port_start=${3:-20000}
-range_port_end=${4:-30000}
+https_port=${3:-443}
+range_port_start=${4:-20000}
+range_port_end=${5:-30000}
 
 server_public_ip=服务器公网IP
 if ! command -v curl &> /dev/null; then
@@ -26,6 +27,7 @@ cat <<EOF > /home/volume/frp/config/frps.ini
 [common]
 bind_port = $server_port
 kcp_bind_port = $server_port
+vhost_https_port = $https_port
 tls_enable = true
 token = $server_token
 allow_ports = $range_port_start-$range_port_end
@@ -40,6 +42,7 @@ docker run -d \
   --memory 256M \
   --network internalnet \
   -p $server_port:$server_port \
+  -p $https_port:$https_port \
   -p $range_port_start-$range_port_end:$range_port_start-$range_port_end \
   -v /home/volume/frp/config/frps.ini:/frp/frps.ini \
   stilleshan/frps:0.51.3
@@ -58,4 +61,15 @@ local_ip = 127.0.0.1
 local_port = 22
 remote_port = $range_port_start
 use_compression = true
+
+[https-example.com]
+type = https
+custom_domains = example.com
+use_compression = true
+plugin = https2http
+plugin_local_addr = 127.0.0.1:10000
+plugin_host_header_rewrite = 127.0.0.1
+plugin_header_X-From-Where = frp
+plugin_crt_path = /home/volume/nginx/ssl/example.com.crt
+plugin_key_path = /home/volume/nginx/ssl/example.com.key
 EOF

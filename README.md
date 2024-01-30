@@ -40,7 +40,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/ins
 ## docker应用
 安装frps服务端
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-frps.sh) pass@word 7000 20000 30000
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-frps.sh) pass@word 7000 443 20000 30000
 ```
 安装frpc客户端
 ```
