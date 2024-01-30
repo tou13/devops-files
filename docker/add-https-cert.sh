@@ -24,9 +24,12 @@ docker run --rm -it -v "$(pwd)/ssl-certs":/acme.sh \
     --keylength 2048
 
 docker run --rm -it -v "$(pwd)/ssl-certs":/acme.sh \
-    -v /home/volume/nginx/ssl:/nginxssl
+    -v /home/volume/nginx/ssl:/nginxssl \
+    --net=host neilpang/acme.sh \
     --install-cert -d $my_domain \
     --key-file /nginxssl/$my_domain.key \
     --fullchain-file /nginxssl/$my_domain.crt
+
+chown -R 1000:1000 /home/volume/nginx/ssl
 
 echo "域名 $my_domain 的https证书生成成功，位于 /home/volume/nginx/ssl/$my_domain.key 和 /home/volume/nginx/ssl/$my_domain.crt，请重启对应服务以生效"
