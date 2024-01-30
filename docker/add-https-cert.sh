@@ -19,6 +19,7 @@ docker run --rm -it -v "$(pwd)/ssl-certs":/acme.sh \
     --net=host neilpang/acme.sh \
     --issue \
     --dns dns_cf \
+    --server letsencrypt \
     -d $my_domain -d *.$my_domain \
     --keylength 2048
 
