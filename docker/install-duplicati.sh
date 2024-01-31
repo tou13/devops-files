@@ -25,6 +25,7 @@ docker run -d \
   -p $web_port:8200 \
   -v /home/volume/duplicati/data:/data \
   -v /home/volume:/home/volume:ro \
+  -v /tmp/duplicati_tempdata:/home/tempdata \
   duplicati/duplicati:2.0.7.1_beta_2023-05-25
 
 echo "Duplicati服务端运行成功，请使用 http://host:$web_port 访问"
