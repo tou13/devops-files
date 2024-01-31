@@ -19,8 +19,6 @@ chown -R 1000:1000 /home/volume/palworld
 docker run -d \
   --name palworld-$USER \
   --restart unless-stopped \
-  --cpus 8 \
-  --memory 16384M \
   --network internalnet \
   -e SERVER_NAME=$server_name \ 
   -e SERVER_DESC=$server_name \ 

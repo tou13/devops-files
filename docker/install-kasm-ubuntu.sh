@@ -33,8 +33,6 @@ chown -R 1000:1000 /home/volume/ubuntu
 docker run -d \
   --name ubuntu-$USER \
   --restart unless-stopped \
-  --cpus 2 \
-  --memory 4000M \
   --shm-size 1000m \
   --network internalnet \
   --dns 94.140.14.14 \
