@@ -23,7 +23,7 @@ cat <<EOF > /usr/local/etc/v2ray/config.json
                     "geoip:private"
                 ],
                 "outboundTag": "block"
-            }
+            },
             {
                 "type": "field",
                 "inboundTag": ["my-in-tag"],
