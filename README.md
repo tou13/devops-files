@@ -33,6 +33,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/ins
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-nginx.sh) 80 443
 ```
+增加nginx配置
+```
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/add-nginx-proxy-pass-site.sh) www.example.com http://127.0.0.1:10080/
+```
 安装ninja
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-ninja.sh) 7999
