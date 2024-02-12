@@ -106,10 +106,6 @@ rules:
   - MATCH,MATCH
 EOF
 
-mkdir -p /home/volume/clash/ui
-wget -O /tmp/yacd.tar.gz https://github.com/MetaCubeX/Yacd-meta/archive/refs/tags/v0.3.7.tar.gz
-tar xvzf /tmp/yacd.tar.gz -C /home/volume/clash/ui
-
 chown -R 1000:1000 /home/volume/clash
 
 docker run -d \
@@ -121,7 +117,6 @@ docker run -d \
   -p 7890:7890 \
   -p 7891:7891 \
   -v /home/volume/clash/config:/root/.config/clash \
-  -v /home/volume/clash/ui:/ui \
   metacubex/clash-meta:v1.16.0
 
 echo "安装成功，使用 http://127.0.0.1:7890 或 socks5://127.0.0.1:7891 代理"
