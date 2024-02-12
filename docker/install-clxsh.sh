@@ -58,22 +58,22 @@ proxies:
     tls: false
 
 proxy-providers:
-  myairport:
+  freeserver:
     type: http
     url: https://api.sublink.dev/sub?target=clash&insert=false&emoji=true&list=true&tfo=false&scv=false&fdn=false&sort=false&new_name=true&url=https%3A%2F%2Fraw.githubusercontent.com%2FPawdroid%2FFree-servers%2Fmain%2Fsub
-    path: ./proxyset/myairport.yaml
-    interval: 21600
+    path: ./proxyset/freeserver.yaml
+    interval: 86400
     health-check:
       enable: true
       interval: 300
-      url: https://www.gstatic.com/generate_204
+      url: "http://connect.rom.miui.com/generate_204"
 
 proxy-groups:
   - name: "PROXY"
     type: url-test
     use:
-      - myairport
-    url: "http://www.gstatic.com/generate_204"
+      - freeserver
+    url: "http://connect.rom.miui.com/generate_204"
     interval: 1800
 
   - name: "MATCH"
@@ -90,13 +90,25 @@ rule-providers:
     path: ./ruleset/gfw.yaml
     interval: 86400
 
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+
 rules:
   - GEOIP,PRIVATE,DIRECT
   - GEOIP,LAN,DIRECT
   - RULE-SET,gfw,PROXY
+  - RULE-SET,telegramcidr,PROXY
   - GEOIP,CN,DIRECT
   - MATCH,MATCH
 EOF
+
+mkdir -p /home/volume/clash/ui
+wget -O /tmp/yacd.tar.gz https://github.com/MetaCubeX/Yacd-meta/archive/refs/tags/v0.3.7.tar.gz
+tar xvzf /tmp/yacd.tar.gz -C /home/volume/clash/ui
 
 chown -R 1000:1000 /home/volume/clash
 
@@ -109,6 +121,7 @@ docker run -d \
   -p 7890:7890 \
   -p 7891:7891 \
   -v /home/volume/clash/config:/root/.config/clash \
+  -v /home/volume/clash/ui:/ui \
   metacubex/clash-meta:v1.16.0
 
 echo "安装成功，使用 http://127.0.0.1:7890 或 socks5://127.0.0.1:7891 代理"
