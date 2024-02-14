@@ -25,6 +25,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/ins
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-v2rxx.sh)
 ```
+安装hy2
+```
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-hy2.sh) 443
+```
 安装ttyd
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-ttyd.sh) admin pass@word
