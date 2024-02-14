@@ -8,6 +8,7 @@ fi
 port=${1:-443}
 password=$(openssl rand -hex 16)
 
+mkdir -p /etc/hysteria/
 cat <<EOF > /etc/hysteria/config.yaml
 listen: :$port
 
