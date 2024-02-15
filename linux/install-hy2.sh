@@ -6,15 +6,19 @@ if command -v hysteria &> /dev/null; then
 fi
 
 port=${1:-443}
+masquerade_host=${2:-maimai.sega.jp}
 password=$(openssl rand -hex 16)
 
 mkdir -p /etc/hysteria/
+
+openssl req -x509 -nodes -newkey ec:<(openssl ecparam -name prime256v1) -keyout /etc/hysteria/$masquerade_host.key -out /etc/hysteria/$masquerade_host.crt -subj "/CN=$masquerade_host" -days 36500
+
 cat <<EOF > /etc/hysteria/config.yaml
 listen: :$port
 
 tls:
-  cert: /home/volume/nginx/ssl/diy.crt
-  key: /home/volume/nginx/ssl/diy.key
+  cert: /etc/hysteria/$masquerade_host.crt
+  key: /etc/hysteria/$masquerade_host.key
 
 auth:
   type: password
@@ -23,7 +27,7 @@ auth:
 masquerade:
   type: proxy
   proxy:
-    url: https://maimai.sega.jp/
+    url: https://$masquerade_host/
     rewriteHost: true
 EOF
 

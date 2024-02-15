@@ -27,7 +27,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/ins
 ```
 安装hy2
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-hy2.sh) 443
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-hy2.sh) 443 bing.com
 ```
 安装ttyd
 ```
