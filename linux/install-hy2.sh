@@ -6,19 +6,21 @@ if command -v hysteria &> /dev/null; then
 fi
 
 port=${1:-443}
-masquerade_host=${2:-maimai.sega.jp}
 password=$(openssl rand -hex 16)
 
 mkdir -p /etc/hysteria/
 
-openssl req -x509 -nodes -newkey ec:<(openssl ecparam -name prime256v1) -keyout /etc/hysteria/$masquerade_host.key -out /etc/hysteria/$masquerade_host.crt -subj "/CN=$masquerade_host" -days 36500
+openssl ecparam -genkey -name prime256v1 -out /etc/hysteria/private.key
+openssl req -new -x509 -days 36500 -key /etc/hysteria/private.key -out /etc/hysteria/cert.crt -subj "/CN=www.bing.com"
+chmod 777 /etc/hysteria/cert.crt
+chmod 777 /etc/hysteria/private.key
 
 cat <<EOF > /etc/hysteria/config.yaml
 listen: :$port
 
 tls:
-  cert: /etc/hysteria/$masquerade_host.crt
-  key: /etc/hysteria/$masquerade_host.key
+  cert: /etc/hysteria/cert.crt
+  key: /etc/hysteria/private.key
 
 auth:
   type: password
@@ -27,7 +29,7 @@ auth:
 masquerade:
   type: proxy
   proxy:
-    url: https://$masquerade_host/
+    url: https://maimai.sega.jp
     rewriteHost: true
 EOF
 
@@ -36,4 +38,12 @@ bash <(curl -fsSL https://get.hy2.sh/)
 systemctl enable --now hysteria-server && \
 systemctl status hysteria-server
 
-echo "安装完成，password：$password，端口：$port。由于使用自签证书，请设置insecure为true"
+echo "安装完成，password：$password，端口：$port，sni: www.bing.com。由于使用自签证书，请设置insecure为true"
+echo "-------clash配置示例---------"
+echo "- name: hy2"
+echo "  type: hysteria2"
+echo "  server: 填写你的服务器ip"
+echo "  port: $port"
+echo "  password: $password"
+echo "  sni: www.bing.com"
+echo "  skip-cert-verify: true"
