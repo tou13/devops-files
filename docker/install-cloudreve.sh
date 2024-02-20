@@ -13,6 +13,7 @@ if [ -f "/home/volume/cloudreve/config/conf.ini" ]; then
 fi
 
 mkdir -p /home/volume/cloudreve/config
+mkdir -p /home/volume/cloudreve/db
 
 cat <<EOF > /home/volume/cloudreve/config/conf.ini
 [Database]
