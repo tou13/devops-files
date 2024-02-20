@@ -27,3 +27,7 @@ VPS测试脚本
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/teddysun/across/master/bench.sh)
 ```
+回程路由测试脚本（需下载大量依赖）
+```
+bash <(curl -Ls https://raw.githubusercontent.com/hijkpw/testrace/master/testrace.sh)
+```
