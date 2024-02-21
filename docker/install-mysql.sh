@@ -6,10 +6,17 @@ if [ "$?" -ne 0 ]; then
     exit $?
 fi
 
+if [ -f "/home/volume/mysql/config/my.cnf" ]; then
+    echo "MySQL配置已存在于 /home/volume/mysql/config/my.cnf ，跳过安装"
+    exit 0
+fi
+
 password=${1:-pass@word}
 port=${2:-3306}
 
-mkdir -p /home/volume/mysql
+mkdir -p /home/volume/mysql/data
+mkdir -p /home/volume/mysql/config
+touch /home/volume/mysql/config/my.cnf
 chown -R 1000:1000 /home/volume/mysql
 
 docker run -d \
