@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-if ! command -v docker &> /dev/null; then
-    echo "请先安装docker。"
-    exit 1
+output_message=$(bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/common/docker-init-check.sh))
+if [ "$?" -ne 0 ]; then
+    echo "初始化脚本检查失败，错误原因：$output_message"
+    exit $?
 fi
 
 client_name=${1:-default}
@@ -25,8 +26,8 @@ chown -R 1000:1000 /home/volume/cloudreve
 docker run -d \
   --name cloudreve-$USER \
   --restart unless-stopped \
-  --cpus 0.12 \
-  --memory 256M \
+  --cpus 0.5 \
+  --memory 512M \
   --network internalnet \
   -u 1000:1000 \
   -e PUID=1000 \

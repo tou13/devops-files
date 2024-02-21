@@ -1,22 +1,12 @@
 #!/usr/bin/env bash
 
 $app_name='obsidian'
-
-if dpkg -l | grep -q "$app_name"; then
-    echo "obsidian 已经安装，跳过安装"
-    exit 0
-fi
-
-if [ "$EUID" -ne 0 ]; then
-    echo "脚本未以root用户执行，请切换到root用户或使用sudo"
-    exit 1
-fi
-
 target_user=${1:-ubuntu}
-target_user_home=$(getent passwd $target_user | cut -d: -f6)
-if [ -z "$target_user_home" ]; then
-    echo "用户 '$target_user' 不存在，跳过安装"
-    exit 1
+
+output_message=$(bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/common/desktop-init-check.sh) $app_name $target_user)
+if [ "$?" -ne 0 ]; then
+    echo "初始化脚本检查失败，错误原因：$output_message"
+    exit $?
 fi
 
 wget -O /tmp/$app_name.deb https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.3/obsidian_1.5.3_amd64.deb
