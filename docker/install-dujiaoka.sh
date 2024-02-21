@@ -66,8 +66,8 @@ chown -R 1000:1000 /home/volume/dujiaoka
 docker run -d \
   --name dujiaoka-$USER \
   --restart unless-stopped \
-  --cpus 0.12 \
-  --memory 256M \
+  --cpus 1 \
+  --memory 1024M \
   --network internalnet \
   -p 127.0.0.1:56789:80 \
   -v /home/volume/dujiaoka/config/env.conf:/dujiaoka/.env \
