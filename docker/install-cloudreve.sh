@@ -6,8 +6,6 @@ if [ "$?" -ne 0 ]; then
     exit $?
 fi
 
-client_name=${1:-default}
-
 if [ -f "/home/volume/cloudreve/config/conf.ini" ]; then
     echo "cloudreve配置已存在于 /home/volume/cloudreve/config/conf.ini ，跳过安装"
     exit 0

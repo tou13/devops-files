@@ -45,32 +45,3 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/add
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-ninja.sh) 7999
 ```
-## docker应用
-安装frps服务端
-```
-bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-frps.sh) pass@word 7000 443 20000 30000
-```
-安装frpc客户端
-```
-bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-frpc.sh) default
-```
-安装Duplicati
-```
-bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-duplicati.sh) 8200
-```
-安装firefox远程浏览器
-```
-bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-kasm-firefox.sh) pass@word 6901
-```
-安装clxsh
-```
-bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-clxsh.sh)
-```
-生成https泛域名证书
-```
-bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/add-https-cert.sh) example.com cf_token cf_account_id
-```
-安装幻兽帕鲁palworld联机服务器
-```
-bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-palworld.sh) mypalworld pass@word
-```
