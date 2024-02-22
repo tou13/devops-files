@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-$app_name='weixin'
-target_user=${1:-ubuntu}
+app_name='weixin'
+target_user=${1:-}
 
 output_message=$(bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/common/desktop-init-check.sh) $app_name $target_user)
 if [ "$?" -ne 0 ]; then

@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
 $app_name=${1:-}
+$target_user=${2:-}
+
+if [ -z "$target_user" ]; then
+    echo "缺少user身份参数"
+    exit 1
+fi
 
 if dpkg -l | grep -q "$app_name"; then
     echo "$app_name 已经安装，跳过安装"
