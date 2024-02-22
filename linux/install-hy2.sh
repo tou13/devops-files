@@ -38,12 +38,45 @@ bash <(curl -fsSL https://get.hy2.sh/)
 systemctl enable --now hysteria-server && \
 systemctl status hysteria-server
 
-echo "安装完成，password：$password，端口：$port，sni: www.bing.com。由于使用自签证书，请设置insecure为true"
-echo "-------clash配置示例---------"
-echo "- name: hy2"
-echo "  type: hysteria2"
-echo "  server: 填写你的服务器ip"
-echo "  port: $port"
-echo "  password: $password"
-echo "  sni: www.bing.com"
-echo "  skip-cert-verify: true"
+
+echo "安装完成，password：$password，端口：$port，sni: www.bing.com。由于使用自签证书，请设置insecure为true。以下是clash配置示例："
+
+server_public_ip=填写你的服务器公网ip
+if ! command -v curl &> /dev/null; then
+    server_public_ip=`curl -sSL http://ipv4.rehi.org/ip`
+fi
+
+cat <<EOF
+mixed-port: 7890
+external-controller: 127.0.0.1:9090
+allow-lan: false
+mode: rule
+log-level: debug
+ipv6: true
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  enhanced-mode: fake-ip
+  nameserver:
+    - 8.8.8.8
+    - 1.1.1.1
+    - 114.114.114.114
+proxies:
+  - name: myhy2
+    type: hysteria2
+    server: $server_public_ip
+    port: $port
+    password: $password
+    sni: www.bing.com
+    skip-cert-verify: true
+    
+proxy-groups:
+  - name: Proxy
+    type: select
+    proxies:
+      - myhy2
+      
+rules:
+  - GEOIP,CN,DIRECT
+  - MATCH,Proxy
+EOF
