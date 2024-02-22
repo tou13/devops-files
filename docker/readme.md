@@ -51,5 +51,5 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/in
 
 独角发卡
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-dujiaoka.sh) 127.0.0.1 3306 dbname dbuser dbpass 127.0.0.1 6379 redispass ShopName https://shop.your.com shop_random_key
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/docker/install-dujiaoka.sh)
 ```

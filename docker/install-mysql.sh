@@ -16,7 +16,6 @@ port=${2:-3306}
 
 mkdir -p /home/volume/mysql/data
 mkdir -p /home/volume/mysql/config
-touch /home/volume/mysql/config/my.cnf
 chown -R 1000:1000 /home/volume/mysql
 
 docker run -d \

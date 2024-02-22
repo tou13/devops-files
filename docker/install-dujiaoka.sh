@@ -11,53 +11,29 @@ if [ -f "/home/volume/dujiaoka/config/env.conf" ]; then
     exit 0
 fi
 
-db_host=${1:-}
-db_port=${2:-3306}
-db_name=${3:-dujiaoka}
-db_user=${4:-dujiaoka}
-db_pass=${5:-pass@word}
-redis_host=${6:-}
-redis_port=${7:-6379}
-redis_pass=${8:-pass@word}
-app_name=${9:-MyShop}
-app_key=${10:-pass@word}
-app_url=${11:-https://127.0.0.1}
-
-if [ -z "$db_host" ] || [ -z "$redis_host" ] || [ -z "$app_name" ]; then
-    echo "缺少必要的参数，请使用 install-dujiaoka.sh db_host db_port db_name db_user db_pass redis_host redis_port redis_pass app_name app_url app_key 的方式传入必要参数"
-    exit 1
-fi
-
 mkdir -p /home/volume/dujiaoka/config/
 cat <<EOF > /home/volume/dujiaoka/config/env.conf
-APP_NAME=$app_name
+APP_NAME=独角数卡
 APP_ENV=local
-APP_KEY=$app_key
-APP_DEBUG=false
-APP_URL=$app_url
-ADMIN_HTTPS=false
-
+APP_KEY=base64:hDVkYhfkUjaePiaI1tcBT7G8bh2A8RQxwWIGkq7BO18=
+APP_DEBUG=true
+APP_URL=http://dujiaoka.test
 LOG_CHANNEL=stack
-
 DB_CONNECTION=mysql
-DB_HOST=$db_host
-DB_PORT=$db_port
-DB_DATABASE=$db_name
-DB_USERNAME=$db_user
-DB_PASSWORD=$db_pass
-
-REDIS_HOST=$redis_host
-REDIS_PASSWORD=$redis_pass
-REDIS_PORT=$redis_port
-
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=
+REDIS_PORT=6379
 BROADCAST_DRIVER=log
 SESSION_DRIVER=file
 SESSION_LIFETIME=120
-
-CACHE_DRIVER=redis
+CACHE_DRIVER=file
 QUEUE_CONNECTION=redis
 DUJIAO_ADMIN_LANGUAGE=zh_CN
-
 ADMIN_ROUTE_PREFIX=/admin
 EOF
 
