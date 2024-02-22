@@ -70,6 +70,7 @@ dns:
     - 8.8.8.8
     - 1.1.1.1
     - 114.114.114.114
+
 proxies:
   - name: myhy2
     type: hysteria2
@@ -78,13 +79,13 @@ proxies:
     password: $password
     sni: www.bing.com
     skip-cert-verify: true
-    
+
 proxy-groups:
   - name: Proxy
     type: select
     proxies:
       - myhy2
-      
+
 rules:
   - GEOIP,CN,DIRECT
   - MATCH,Proxy
