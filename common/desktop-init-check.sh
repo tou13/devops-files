@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-$app_name=${1:-}
-$target_user=${2:-}
+app_name=${1:-}
+target_user=${2:-}
 
 if [ -z "$target_user" ]; then
     echo "缺少user身份参数"
