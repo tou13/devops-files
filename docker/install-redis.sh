@@ -21,7 +21,7 @@ docker run -d \
   -u 1000:1000 \
   -p $port:6379 \
   -v /home/volume/redis/data:/data \
-  redis:7.2.14 \
+  redis:6.2.14 \
   redis-server --requirepass "$password"
 
 chown -R 1000:1000 /home/volume/redis
