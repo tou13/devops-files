@@ -5,7 +5,7 @@ sed -i "/# GitHub520 Host Start/Q" /etc/hosts && curl https://raw.hellogithub.co
 ```
 为IPv6添加nat64
 ```
-echo "nameserver 2a00:1098:2c::1" >> /etc/resolv.conf
+cp -n /etc/resolv.conf /etc/resolv.conf.bak && echo -e "nameserver 2a00:1098:2b::1\nnameserver 2a01:4f9:c010:3f02::1\nnameserver 2a01:4f8:c2c:123f::1\nnameserver 2a00:1098:2c::1" > /etc/resolv.conf
 ```
 重装debian 11 (有DHCP)
 ```
