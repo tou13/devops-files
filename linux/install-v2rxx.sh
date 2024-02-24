@@ -5,7 +5,14 @@ if command -v v2ray &> /dev/null; then
     exit 0
 fi
 
-port=${1:-10080}
+domain=${1:-}
+port=${2:-443}
+
+if [ -z "$domain" ]; then
+    echo "缺少域名参数"
+    exit 1
+fi
+
 uuid=$(openssl rand -hex 16)
 uuid2=${uuid:0:8}-${uuid:8:4}-${uuid:12:4}-${uuid:16:4}-${uuid:20:12}
 mkdir -p /usr/local/etc/v2ray
@@ -33,8 +40,8 @@ cat <<EOF > /usr/local/etc/v2ray/config.json
     },
     "inbounds": [
         {
-            "listen": "0.0.0.0",
-            "port": $port,
+            "listen": "127.0.0.1",
+            "port": 10080,
             "protocol": "vmess",
             "settings": {
                 "clients": [
@@ -58,8 +65,8 @@ cat <<EOF > /usr/local/etc/v2ray/config.json
         },
         {
             "tag": "my-in-tag",
-            "listen": "0.0.0.0",
-            "port": $(($port+1)),
+            "listen": "127.0.0.1",
+            "port": 10081,
             "protocol": "vmess",
             "settings": {
                 "clients": [
@@ -112,4 +119,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master
 systemctl enable --now v2ray && \
 systemctl status v2ray
 
-echo "安装完成，uuid：$uuid2，端口：$port"
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/add-nginx-proxy-pass-site.sh) $domain http://127.0.0.1:10080/ $port
+
+echo "安装完成，协议：vmess + tls + ws，host: $domain, uuid：$uuid2，端口：$port"
+echo "请记得重启nginx，使得nginx配置生效"
