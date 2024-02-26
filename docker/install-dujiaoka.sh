@@ -105,22 +105,22 @@ docker run -d \
   --network internalnet \
   -e INSTALL=$is_install \
   -p 127.0.0.1:56789:80 \
-  -v /home/volume/dujiaoka/config/env.conf:/dujiaoka/.env \
+  -v /home/volume/dujiaoka/config/dujiaoka.conf:/dujiaoka/.env \
   -v /home/volume/dujiaoka/uploads:/dujiaoka/public/uploads \
   -v /home/volume/dujiaoka/storage:/dujiaoka/storage \
   ghcr.io/apocalypsor/dujiaoka:latest
 
-docker stop usdt-$USER && docker rm usdt-$USER
+docker stop epusdt-$USER && docker rm epusdt-$USER
 
 docker run -d \
-  --name usdt-$USER \
+  --name epusdt-$USER \
   --restart unless-stopped \
   --cpus 1 \
   --memory 1024M \
   --network internalnet \
   -e INSTALL=$is_install \
   -p 127.0.0.1:51293:8000 \
-  -v /home/volume/dujiaoka/config/usdt.conf:/usdt/.env \
+  -v /home/volume/dujiaoka/config/epusdt.conf:/usdt/.env \
   ghcr.io/apocalypsor/dujiaoka:usdt
 
 chown -R 1000:1000 /home/volume/dujiaoka
@@ -143,20 +143,14 @@ location ^~ /
     sub_filter_once off;
 }
 
-以下是usdt的配置：
+以下是epusdt的配置：
 location ^~ /
 {
-    proxy_pass http://127.0.0.1:56789;
+    proxy_pass http://127.0.0.1:51293;
     proxy_set_header Host \$host;
     proxy_set_header X-Real-IP \$remote_addr;
     proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
     proxy_set_header REMOTE-HOST \$remote_addr;
     proxy_set_header X-Forwarded-Proto  \$scheme;
-
-    add_header X-Cache \$upstream_cache_status;
-
-    proxy_set_header Accept-Encoding "";
-    sub_filter "http://" "https://";
-    sub_filter_once off;
 }
 EOF
