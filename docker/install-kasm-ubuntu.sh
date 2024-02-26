@@ -65,4 +65,21 @@ docker run -d \
   -v /home/volume/ubuntu/uploads:/home/kasm-user/Uploads \
   kasmweb/ubuntu-jammy-desktop:1.14.0
 
-echo "Ubuntu安装成功，访问 https://host:$web_port ，使用账号 kasm_user / $login_pass 登入"
+echo "Ubuntu安装成功，访问 https://host:$web_port ，使用账号 kasm_user / $login_pass 登入。使用nginx反代的配置示例如下："
+cat <<EOF
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name yourdomain.com;
+    ssl_certificate       /home/volume/nginx/ssl/diy.crt;
+    ssl_certificate_key   /home/volume/nginx/ssl/diy.key;
+
+    location / {
+        proxy_pass https://127.0.0.1:$web_port/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade \$http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Authorization \$http_authorization;
+    }
+}
+EOF
