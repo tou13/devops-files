@@ -7,12 +7,23 @@ if [ "$?" -ne 0 ]; then
 fi
 
 if [ -f "/home/volume/dujiaoka/config/env.conf" ]; then
-    echo "独角数卡配置已存在于 /home/volume/dujiaoka/config/env.conf ，跳过安装"
-    exit 0
+    read -p "独角数卡配置已存在于 /home/volume/dujiaoka/config/env.conf ，是否继续安装？(y/n): " user_input
+
+    if [ "$user_input" = "n" ]; then
+        echo "安装被用户取消"
+        exit 0
+    elif [ "$user_input" = "y" ]; then
+        echo "继续安装..."
+    else
+        echo "无效输入，安装被取消"
+        exit 1
+    fi
 fi
 
 mkdir -p /home/volume/dujiaoka/config/
-cat <<EOF > /home/volume/dujiaoka/config/env.conf
+
+if [ ! -f "/home/volume/dujiaoka/config/env.conf" ]; then
+    cat <<EOF > /home/volume/dujiaoka/config/env.conf
 APP_NAME=独角数卡
 APP_ENV=local
 APP_KEY=base64:hDVkYhfkUjaePiaI1tcBT7G8bh2A8RQxwWIGkq7BO18=
@@ -36,8 +47,11 @@ QUEUE_CONNECTION=redis
 DUJIAO_ADMIN_LANGUAGE=zh_CN
 ADMIN_ROUTE_PREFIX=/admin
 EOF
+fi
 
 chown -R 1000:1000 /home/volume/dujiaoka
+
+docker stop duplicati-$USER && docker rm duplicati-$USER
 
 docker run -d \
   --name dujiaoka-$USER \

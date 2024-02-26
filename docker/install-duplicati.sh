@@ -7,14 +7,25 @@ if [ "$?" -ne 0 ]; then
 fi
 
 if [ -d "/home/volume/duplicati/data" ]; then
-    echo "Duplicati配置已存在于 /home/volume/duplicati/data ，跳过安装"
-    exit 0
+    read -p "Duplicati配置已存在于 /home/volume/duplicati/data ，是否继续安装？(y/n): " user_input
+
+    if [ "$user_input" = "n" ]; then
+        echo "安装被用户取消"
+        exit 0
+    elif [ "$user_input" = "y" ]; then
+        echo "继续安装..."
+    else
+        echo "无效输入，安装被取消"
+        exit 1
+    fi
 fi
 
 web_port=${1:-8200}
 
 mkdir -p /home/volume/duplicati/data
 chown -R 1000:1000 /home/volume/duplicati
+
+docker stop duplicati-$USER && docker rm duplicati-$USER
 
 docker run -d \
   --name duplicati-$USER \

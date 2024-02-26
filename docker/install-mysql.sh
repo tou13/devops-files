@@ -7,8 +7,17 @@ if [ "$?" -ne 0 ]; then
 fi
 
 if [ -f "/home/volume/mysql/config/my.cnf" ]; then
-    echo "MySQL配置已存在于 /home/volume/mysql/config/my.cnf ，跳过安装"
-    exit 0
+    read -p "MySQL配置已存在于 /home/volume/mysql/config/my.cnf ，是否继续安装？(y/n): " user_input
+
+    if [ "$user_input" = "n" ]; then
+        echo "安装被用户取消"
+        exit 0
+    elif [ "$user_input" = "y" ]; then
+        echo "继续安装..."
+    else
+        echo "无效输入，安装被取消"
+        exit 1
+    fi
 fi
 
 password=${1:-pass@word}
@@ -17,6 +26,8 @@ port=${2:-3306}
 mkdir -p /home/volume/mysql/data
 mkdir -p /home/volume/mysql/config
 chown -R 1000:1000 /home/volume/mysql
+
+docker stop mysql-$USER && docker rm mysql-$USER
 
 docker run -d \
   --name mysql-$USER \

@@ -7,15 +7,25 @@ if [ "$?" -ne 0 ]; then
 fi
 
 if [ -f "/home/volume/clash/config/config.yaml" ]; then
-    echo "clash客户端配置已存在于 /home/volume/clash/config/config.yaml ，跳过安装"
-    exit 0
+    read -p "clash客户端配置已存在于 /home/volume/clash/config/config.yaml ，是否继续安装？(y/n): " user_input
+
+    if [ "$user_input" = "n" ]; then
+        echo "安装被用户取消"
+        exit 0
+    elif [ "$user_input" = "y" ]; then
+        echo "继续安装..."
+    else
+        echo "无效输入，安装被取消"
+        exit 1
+    fi
 fi
 
 mkdir -p /home/volume/clash/config
 
 wget -O /home/volume/clash/config/geoip.metadb https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.metadb
 
-cat <<EOF > /home/volume/clash/config/config.yaml
+if [ ! -f "/home/volume/clash/config/config.yaml" ]; then
+    cat <<EOF > /home/volume/clash/config/config.yaml
 port: 7890
 socks-port: 7891
 allow-lan: true
@@ -106,8 +116,11 @@ rules:
   - GEOIP,CN,DIRECT
   - MATCH,MATCH
 EOF
+fi
 
 chown -R 1000:1000 /home/volume/clash
+
+docker stop clash-$USER && docker rm clash-$USER
 
 docker run -d \
   --name clash-$USER \

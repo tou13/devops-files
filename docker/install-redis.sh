@@ -12,6 +12,8 @@ port=${2:-6379}
 mkdir -p /home/volume/redis
 chown -R 1000:1000 /home/volume/redis
 
+docker stop redis-$USER && docker rm redis-$USER
+
 docker run -d \
   --name redis-$USER \
   --restart unless-stopped \

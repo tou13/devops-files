@@ -10,8 +10,17 @@ login_pass=${1:-pass@word}
 web_port=${2:-6901}
 
 if [ -d "/home/volume/firefox/config" ]; then
-    echo "Firefox配置已经存在，跳过安装"
-    exit 0
+    read -p "Firefox配置已经存在，是否继续安装？(y/n): " user_input
+
+    if [ "$user_input" = "n" ]; then
+        echo "安装被用户取消"
+        exit 0
+    elif [ "$user_input" = "y" ]; then
+        echo "继续安装..."
+    else
+        echo "无效输入，安装被取消"
+        exit 1
+    fi
 fi
 
 mkdir -p /home/volume/firefox/config
@@ -28,6 +37,8 @@ user_session:
 EOF
 
 chown -R 1000:1000 /home/volume/firefox
+
+docker stop firefox-$USER && docker rm firefox-$USER
 
 docker run -d \
   --name firefox-$USER \
@@ -52,8 +63,4 @@ docker run -d \
   -v /home/volume/firefox/config:/home/kasm-user/.mozilla \
   kasmweb/firefox:1.14.0
 
-server_public_ip=host
-if ! command -v curl &> /dev/null; then
-    server_public_ip=`curl -sSL http://ipv4.rehi.org/ip`
-fi
-echo "firefox远程浏览器安装成功，访问 https://$server_public_ip:$web_port ，使用账号 kasm_user / $login_pass 登入"
+echo "firefox远程浏览器安装成功，访问 https://host:$web_port ，使用账号 kasm_user / $login_pass 登入"

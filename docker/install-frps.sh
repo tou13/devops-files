@@ -7,8 +7,17 @@ if [ "$?" -ne 0 ]; then
 fi
 
 if [ -f "/home/volume/frp/config/frps.ini" ]; then
-    echo "FRP服务端配置已存在于 /home/volume/frp/config/frps.ini ，跳过安装"
-    exit 0
+    read -p "FRP服务端配置已存在于 /home/volume/frp/config/frps.ini ，是否继续安装？(y/n): " user_input
+
+    if [ "$user_input" = "n" ]; then
+        echo "安装被用户取消"
+        exit 0
+    elif [ "$user_input" = "y" ]; then
+        echo "继续安装..."
+    else
+        echo "无效输入，安装被取消"
+        exit 1
+    fi
 fi
 
 server_token=${1:-pass@word}
@@ -24,7 +33,8 @@ fi
 
 mkdir -p /home/volume/frp/config
 
-cat <<EOF > /home/volume/frp/config/frps.ini
+if [ ! -f "/home/volume/frp/config/frps.ini" ]; then
+    cat <<EOF > /home/volume/frp/config/frps.ini
 [common]
 bind_port = $server_port
 kcp_bind_port = $server_port
@@ -33,8 +43,11 @@ tls_enable = true
 token = $server_token
 allow_ports = $range_port_start-$range_port_end
 EOF
+fi
 
 chown -R 1000:1000 /home/volume/frp
+
+docker stop frps-$USER && docker rm frps-$USER
 
 docker run -d \
   --name frps-$USER \

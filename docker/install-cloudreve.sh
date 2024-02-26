@@ -7,17 +7,28 @@ if [ "$?" -ne 0 ]; then
 fi
 
 if [ -f "/home/volume/cloudreve/config/conf.ini" ]; then
-    echo "cloudreve配置已存在于 /home/volume/cloudreve/config/conf.ini ，跳过安装"
-    exit 0
+    read -p "cloudreve配置已存在于 /home/volume/cloudreve/config/conf.ini ，是否继续安装？(y/n): " user_input
+
+    if [ "$user_input" = "n" ]; then
+        echo "安装被用户取消"
+        exit 0
+    elif [ "$user_input" = "y" ]; then
+        echo "继续安装..."
+    else
+        echo "无效输入，安装被取消"
+        exit 1
+    fi
 fi
 
 mkdir -p /home/volume/cloudreve/config
 mkdir -p /home/volume/cloudreve/db
 
-cat <<EOF > /home/volume/cloudreve/config/conf.ini
+if [ ! -f "/home/volume/cloudreve/config/conf.ini" ]; then
+    cat <<EOF > /home/volume/cloudreve/config/conf.ini
 [Database]
 DBFile = /cloudreve/db/cloudreve.db
 EOF
+fi
 
 chown -R 1000:1000 /home/volume/cloudreve
 
