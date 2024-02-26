@@ -6,7 +6,7 @@ if [ "$?" -ne 0 ]; then
     exit $?
 fi
 
-is_install=false
+is_install=true
 
 if [ -f "/home/volume/dujiaoka/config/dujiaoka.conf" ]; then
     read -p "独角数卡配置已存在于 /home/volume/dujiaoka/config/env.conf ，是否继续安装？(y/n): " user_input
@@ -16,7 +16,7 @@ if [ -f "/home/volume/dujiaoka/config/dujiaoka.conf" ]; then
         exit 0
     elif [ "$user_input" = "y" ]; then
         echo "继续安装..."
-        is_install=true
+        is_install=false
     else
         echo "无效输入，安装被取消"
         exit 1
