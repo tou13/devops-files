@@ -10,8 +10,17 @@ login_pass=${1:-pass@word}
 web_port=${2:-6901}
 
 if [ -d "/home/volume/ubuntu/config" ]; then
-    echo "Ubuntu配置已经存在，跳过安装"
-    exit 0
+    read -p "Ubuntu配置已经存在，是否继续安装？(y/n): " user_input
+
+    if [ "$user_input" = "n" ]; then
+        echo "安装被用户取消"
+        exit 0
+    elif [ "$user_input" = "y" ]; then
+        echo "继续安装..."
+    else
+        echo "无效输入，安装被取消"
+        exit 1
+    fi
 fi
 
 mkdir -p /home/volume/ubuntu/config
