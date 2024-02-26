@@ -40,6 +40,8 @@ EOF
 
 chown -R 1000:1000 /home/volume/ubuntu
 
+docker stop ubuntu-$USER && docker rm ubuntu-$USER
+
 docker run -d \
   --name ubuntu-$USER \
   --restart unless-stopped \
@@ -63,8 +65,4 @@ docker run -d \
   -v /home/volume/ubuntu/uploads:/home/kasm-user/Uploads \
   kasmweb/ubuntu-jammy-desktop:1.14.0
 
-server_public_ip=host
-if ! command -v curl &> /dev/null; then
-    server_public_ip=`curl -sSL http://ipv4.rehi.org/ip`
-fi
-echo "Ubuntu安装成功，访问 https://$server_public_ip:$web_port ，使用账号 kasm_user / $login_pass 登入"
+echo "Ubuntu安装成功，访问 https://host:$web_port ，使用账号 kasm_user / $login_pass 登入"
