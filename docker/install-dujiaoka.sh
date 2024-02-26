@@ -8,7 +8,7 @@ fi
 
 is_install=false
 
-if [ -f "/home/volume/dujiaoka/config/env.conf" ]; then
+if [ -f "/home/volume/dujiaoka/config/dujiaoka.conf" ]; then
     read -p "独角数卡配置已存在于 /home/volume/dujiaoka/config/env.conf ，是否继续安装？(y/n): " user_input
 
     if [ "$user_input" = "n" ]; then
