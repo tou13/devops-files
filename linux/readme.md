@@ -13,7 +13,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/ins
 ```
 安装v2rxx
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-v2rxx.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/install-v2rxx.sh) www.example.com 443
 ```
 安装hy2
 ```
@@ -29,7 +29,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/ins
 ```
 增加nginx配置
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/add-nginx-proxy-pass-site.sh) www.example.com http://127.0.0.1:10080/ 443
+bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/add-nginx-proxy-pass-site.sh) www.example.com http://127.0.0.1:1234 443
 ```
 安装ninja
 ```

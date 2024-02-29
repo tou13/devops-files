@@ -7,7 +7,7 @@ fi
 
 ninja_port=${1:-7999}
 
-wget -O ninja.tar.gz https://github.com/gngpp/ninja/releases/download/v0.9.28/ninja-0.9.28-x86_64-unknown-linux-musl.tar.gz
+wget -O ninja.tar.gz https://github.com/gngpp/ninja/releases/download/v0.9.36/ninja-0.9.36-x86_64-unknown-linux-musl.tar.gz
 tar -xvzf ninja.tar.gz
 mv ./ninja /usr/local/bin/
 
