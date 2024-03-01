@@ -6,6 +6,7 @@ if command -v ninja &> /dev/null; then
 fi
 
 ninja_port=${1:-7999}
+password=$(openssl rand -hex 16)
 
 wget -O ninja.tar.gz https://github.com/gngpp/ninja/releases/download/v0.9.40/ninja-0.9.40-x86_64-unknown-linux-musl.tar.gz
 tar -xvzf ninja.tar.gz
@@ -18,7 +19,7 @@ Documentation=https://github.com/gngpp/ninja/blob/main/README_zh.md
 After=network.target
 
 [Service]
-ExecStart=/usr/local/bin/ninja run --bind 0.0.0.0:$ninja_port
+ExecStart=/usr/local/bin/ninja run --bind 0.0.0.0:$ninja_port --auth-key=$password
 Restart=on-failure
 Environment="HOME=/root"
 
@@ -31,4 +32,4 @@ systemctl daemon-reload
 systemctl enable --now ninja
 systemctl status ninja
 
-echo "ninja安装成功，使用 https://host:$ninja_port 访问" 
+echo "ninja安装成功，使用密码 $password 登录 http://host:$ninja_port/fingerprint/upload 上传har文件后使用。" 
