@@ -64,9 +64,19 @@ cat <<EOF > /usr/local/etc/v2ray/config.json
             }
         },
         {
-            "tag": "my-in-tag",
             "listen": "127.0.0.1",
             "port": 10081,
+            "protocol": "shadowsocks",
+            "settings": {
+                "method": "chacha20-ietf-poly1305",
+                "password": "$uuid",
+                "ota": true
+            }
+        },
+        {
+            "tag": "my-in-tag",
+            "listen": "127.0.0.1",
+            "port": 10082,
             "protocol": "vmess",
             "settings": {
                 "clients": [
@@ -121,5 +131,7 @@ systemctl status v2ray
 
 bash <(curl -Ls https://raw.githubusercontent.com/tou13/somefiles/main/linux/add-nginx-proxy-pass-site.sh) $domain http://127.0.0.1:10080/ $port
 
-echo "安装完成，协议：vmess + tls + ws，host: $domain, uuid：$uuid2，端口：$port"
+echo "v2ray安装完成，"
+echo "协议1：vmess + tls + ws，host: $host, uuid：$uuid2，端口：$port"
+echo "协议2：shadowsocks，host: 127.0.0.1, password: $uuid，端口：10081"
 echo "请记得重启nginx，使得nginx配置生效"
