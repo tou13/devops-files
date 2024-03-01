@@ -33,3 +33,4 @@ systemctl enable --now ninja
 systemctl status ninja
 
 echo "ninja安装成功，使用密码 $password 登录 http://host:$ninja_port/fingerprint/upload 上传har文件后使用。" 
+echo "har文件需要使用浏览器控制台，再网络选项卡中过滤 https://tcr9i.chat.openai.com/fc/gt2/public_key/35536E1E-65B4-4D96-9D97-6ADB7EFF8147 的请求，右击保存为har文件上传"
