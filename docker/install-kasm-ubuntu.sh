@@ -40,6 +40,9 @@ EOF
 
 chown -R 1000:1000 /home/volume/ubuntu
 
+mkdir -p /home/download/ubuntu
+chown -R 1000:1000 /home/download
+
 docker stop ubuntu-$USER && docker rm ubuntu-$USER
 
 docker run -d \
@@ -63,6 +66,7 @@ docker run -d \
   -v /home/volume/ubuntu/config:/home/kasm-user/.config \
   -v /home/volume/ubuntu/local:/home/kasm-user/.local \
   -v /home/volume/ubuntu/uploads:/home/kasm-user/Uploads \
+  -v /home/download/ubuntu:/home/kasm-user/Downloads \
   kasmweb/ubuntu-jammy-desktop:1.14.0
 
 echo "Ubuntu安装成功，访问 https://host:$web_port ，使用账号 kasm_user / $login_pass 登入。使用nginx反代的配置示例如下："
