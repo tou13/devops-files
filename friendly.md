@@ -31,6 +31,10 @@ VPS测试脚本
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/teddysun/across/master/bench.sh)
 ```
+流媒体解锁测试
+```
+bash <(curl -Ls https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
+```
 回程路由测试脚本（需下载大量依赖）
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/hijkpw/testrace/master/testrace.sh)
