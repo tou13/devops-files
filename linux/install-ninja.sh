@@ -8,7 +8,7 @@ fi
 ninja_port=${1:-7999}
 password=$(openssl rand -hex 16)
 
-wget -O ninja.tar.gz https://github.com/gngpp/ninja/releases/download/v0.9.40/ninja-0.9.40-x86_64-unknown-linux-musl.tar.gz
+wget -O ninja.tar.gz https://github.com/gngpp/ninja/releases/download/v0.9.36/ninja-0.9.36-x86_64-unknown-linux-musl.tar.gz
 tar -xvzf ninja.tar.gz
 mv ./ninja /usr/local/bin/
 
