@@ -9,7 +9,7 @@ if [ "$?" -ne 0 ]; then
     exit $?
 fi
 
-wget -O /tmp/$app_name.deb https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.3/obsidian_1.5.3_amd64.deb
+wget -O /tmp/$app_name.deb https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.8/obsidian_1.5.8_amd64.deb
 apt install /tmp/$app_name.deb
 
 echo "Obsidian 安装成功"
