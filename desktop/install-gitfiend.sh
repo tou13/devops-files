@@ -14,6 +14,7 @@ apt install /tmp/$app_name.deb
 
 echo "GitFiend 安装成功"
 
+target_user_home=$(getent passwd $target_user | cut -d: -f6)
 cat <<EOF > $target_user_home/Desktop/$app_name.desktop
 [Desktop Entry]
 Name=GitFiend
